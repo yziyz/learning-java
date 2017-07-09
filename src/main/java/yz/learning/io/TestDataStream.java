@@ -3,7 +3,7 @@ package yz.learning.io;
 import java.io.*;
 
 /**
- * Created by yuanzhen on 6/2/17.
+ * 测试DataOutputStream
  */
 public class TestDataStream {
     public static void main(String[] args) throws IOException{
