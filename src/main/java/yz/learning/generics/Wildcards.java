@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * 测试Wildcards
+ * 通配符
  */
 public class Wildcards {
     public static void main(String[] args) {

@@ -1,12 +1,22 @@
 package yz.learning.generics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 测试BoundedWildcards
  */
 public class BoundedWildcards {
-    Canvas canvas = new Canvas();
+    public static void main(String[] args) {
+        Canvas canvas = new Canvas();
+        canvas.draw(new Circle());
+        canvas.draw(new Rectangle());
+
+        List<Shape> shapes = new ArrayList<>(2);
+        shapes.add(new Circle());
+        shapes.add(new Rectangle());
+        canvas.drawAll(shapes);
+    }
 }
 
 /**
@@ -24,7 +34,7 @@ class Circle extends Shape {
 
     @Override
     public void draw(Canvas c) {
-        System.out.println(c.getClass().getCanonicalName());
+        System.out.println(this.getClass().getCanonicalName());
     }
 }
 
@@ -36,7 +46,7 @@ class Rectangle extends Shape {
 
     @Override
     public void draw(Canvas c) {
-        System.out.println(c.getClass().getCanonicalName());
+        System.out.println(this.getClass().getCanonicalName());
     }
 }
 
