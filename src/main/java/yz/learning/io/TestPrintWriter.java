@@ -11,7 +11,7 @@ public class TestPrintWriter {
     public static void main(String[] args) {
         try {
             PrintWriter printWriter = new PrintWriter(new FileOutputStream("temp.dat", true));
-            printWriter.append("printWriter");
+            printWriter.append("你好");
             printWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
