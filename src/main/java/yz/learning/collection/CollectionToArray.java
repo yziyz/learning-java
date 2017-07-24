@@ -11,6 +11,7 @@ public class CollectionToArray {
         List<String> list = new ArrayList<>(2);
         list.add("a");
         list.add("b");
+        //集合转数组
         String[] array = new String[list.size()];
         array = list.toArray(array);
         for (String s : array) {

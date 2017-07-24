@@ -32,7 +32,7 @@ public class CountChar {
     }
 
     public static void main(String[] args) {
-        char[] chars = "asasdadasdasdrtyktiluyilylyilidddas".toCharArray();
+        char[] chars = "dasdafasfjlkjlkjjaskdfjlaskdjflaskdjfalskdjf".toCharArray();
 
         count(chars);
     }

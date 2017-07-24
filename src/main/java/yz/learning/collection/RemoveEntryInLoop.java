@@ -13,15 +13,12 @@ public class RemoveEntryInLoop {
         list.add("1");
         list.add("2");
         list.add("3");
-        /*for (String s : list) {
+        /*
+        for (String s : list) {
             if ("1".equals(s)) {
-                list.remove(s);
+                list.remove(s);//java.util.ConcurrentModificationException
             }
         }
-        Exception in thread "main" java.util.ConcurrentModificationException
-            at java.util.LinkedList$ListItr.checkForComodification(LinkedList.java:966)
-            at java.util.LinkedList$ListItr.next(LinkedList.java:888)
-            at yz.learning.collection.RemoveEntryInLoop.main(RemoveEntryInLoop.java:16)
          */
 
 
