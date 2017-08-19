@@ -1,4 +1,4 @@
-package yz.learning.basic;
+package yz.learning.enumuration;
 
 /**
  * 枚举类型

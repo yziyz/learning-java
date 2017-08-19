@@ -1,4 +1,4 @@
-package yz.learning.basic;
+package yz.learning.enumuration;
 
 /**
  * Java编程语言枚举类型比其他语言的类型更强大。
