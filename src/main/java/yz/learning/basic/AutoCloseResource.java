@@ -21,7 +21,7 @@ public class AutoCloseResource implements AutoCloseable {
      *
      * @throws InterruptedException 当线程被终止时抛出异常
      */
-    private void takeARest() throws InterruptedException {
+    private void work() throws InterruptedException {
         System.out.println(LocalDateTime.now() + " Doing something");
         Thread.sleep(2000);
     }
@@ -42,7 +42,8 @@ public class AutoCloseResource implements AutoCloseable {
      */
     public static void main(String[] args) {
         try (AutoCloseResource resource = new AutoCloseResource()) {
-            resource.takeARest();
+            //使用资源
+            resource.work();
         } catch (Exception e) {
             e.printStackTrace();
         }
