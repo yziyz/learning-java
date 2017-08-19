@@ -105,7 +105,7 @@ public class RetrievingClassObjects {
          */
         try {
             //This statement will create a class from the given fully-qualified name.
-            Class<?> regularExpressionClass = Class.forName("yz.learning.RegularExpression");
+            Class<?> regularExpressionClass = Class.forName("yz.learning.regex.RegularExpression");
             System.out.println(regularExpressionClass.getCanonicalName());
 
             /*
