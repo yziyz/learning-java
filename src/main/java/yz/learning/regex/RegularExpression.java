@@ -1,4 +1,4 @@
-package yz.learning;
+package yz.learning.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
