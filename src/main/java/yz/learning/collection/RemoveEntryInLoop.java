@@ -16,11 +16,10 @@ public class RemoveEntryInLoop {
         /*
         for (String s : list) {
             if ("1".equals(s)) {
-                list.remove(s);//java.util.ConcurrentModificationException
+                list.remove(s);//抛出java.util.ConcurrentModificationException
             }
         }
          */
-
 
         Iterator<String> iterator = list.iterator();
         while (iterator.hasNext()) {
@@ -30,7 +29,7 @@ public class RemoveEntryInLoop {
             }
         }
         /*
-        等同于如下lambda表达：
+        等同于如下lambda表达式：
         list.removeIf("2"::equals);
          */
 
