@@ -12,6 +12,7 @@ public class LocalClass {
     private static void validatePhoneNumber(String phoneNumber1, String phoneNumber2) {
         final int numberLength = 10;
 
+        //a local class
         class PhoneNumber {
             String formattedPhoneNumber = null;
 
