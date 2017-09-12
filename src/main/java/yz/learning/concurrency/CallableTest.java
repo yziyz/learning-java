@@ -14,7 +14,7 @@ public class CallableTest {
     static class WordLengthCallable implements Callable<Integer> {
         private String word;
 
-        public WordLengthCallable(String word) {
+        WordLengthCallable(String word) {
             this.word = word;
         }
 
@@ -44,5 +44,8 @@ public class CallableTest {
         }
 
         System.out.println(sum);
+
+        set.clear();
+        pool.shutdown();
     }
 }
