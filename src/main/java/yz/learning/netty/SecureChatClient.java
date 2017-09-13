@@ -1,11 +1,14 @@
 package yz.learning.netty;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.Delimiters;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
@@ -67,5 +70,51 @@ public class SecureChatClient {
             //The connection is closed automatically on shutdown.
             group.shutdownGracefully();
         }
+    }
+}
+
+/**
+ * Creates a newly configured {@link ChannelPipeline} for a new channel.
+ */
+class SecureChatClientInitializer extends ChannelInitializer<SocketChannel> {
+
+    private final SslContext sslContext;
+
+    public SecureChatClientInitializer(SslContext sslContext) {
+        this.sslContext = sslContext;
+    }
+
+    @Override
+    protected void initChannel(SocketChannel ch) throws Exception {
+        ChannelPipeline pipeline = ch.pipeline();
+
+        //Add SSL handler first to encrypt and decrypt everything,.
+        //In this example, we use a bogus certificate in the server side and accept any invalid certificates int client side.
+        //You will need something more complicated to identify both and server int the real world.
+        pipeline.addLast(sslContext.newHandler(ch.alloc(), SecureChatClient.HOST, SecureChatClient.PORT));
+
+        //On top of the SSL handler, add the text line codec.
+        pipeline.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+        pipeline.addLast(new StringDecoder());
+        pipeline.addLast(new StringEncoder());
+
+        //and then business logic
+        pipeline.addLast(new SecureChatClientHandler());
+    }
+}
+
+/**
+ * Handles a client-side channel.
+ */
+class SecureChatClientHandler extends SimpleChannelInboundHandler<String> {
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        System.out.println(msg);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
     }
 }
